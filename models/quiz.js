@@ -20,10 +20,15 @@ module.exports = (sequelize, Sequelize) => {
       },
       categoryId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {          
+          model: "categories",
+          key: "id",
+        },
       },
       levelId: {
         type: Sequelize.INTEGER,
-      }
+      },
     });
     return Quiz;
 }

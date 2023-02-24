@@ -20,4 +20,14 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.quizzes = require('./quiz')(sequelize, Sequelize);
+db.category = require("./category")(sequelize, Sequelize);
+
+db.category.hasMany(db.quizzes, {
+  foreignKey: "id",
+  as: "quizzes",
+});
+db.quizzes.belongsTo(db.category, {
+  foreignKey: "id",
+  as: "category",
+});
 module.exports = db;
